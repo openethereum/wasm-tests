@@ -1,0 +1,18 @@
+[package]
+name = "wasm-tests"
+version = "0.1.0"
+authors = ["NikVolf <nikvolf@gmail.com>"]
+
+[dependencies]
+
+[[bin]]
+name = "empty"
+path = "src/empty.rs"
+
+[[bin]]
+name = "static"
+path = "src/static.rs"
+
+[[bin]]
+name = "logger"
+path = "src/logger.rs"
