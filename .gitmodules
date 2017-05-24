@@ -1,0 +1,3 @@
+[submodule "wasm-tools"]
+	path = wasm-tools
+	url = https://github.com/NikVolf/wasm-tools
