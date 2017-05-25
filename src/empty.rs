@@ -3,6 +3,9 @@
 
 mod helpers;
 
-fn main() {
-    println!("Hello, world!");
+use helpers::logger;
+
+#[no_mangle]
+pub fn call(_desc: *mut u8) {
+    logger::debug("Empty contract");
 }

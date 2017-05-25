@@ -1,3 +1,5 @@
+#![allow(dead_code)] // current issues of the build process
+
 use std::{self, slice};
 
 #[link_args = "-s NO_EXIT_RUNTIME=1 -s NO_FILESYSTEM=1 -s WASM=1"]
@@ -35,6 +37,21 @@ pub mod storage {
             _ => Ok(()),
         }
     }
+}
+
+/// Safe wrapper around debug logging
+pub mod logger {
+    mod ext {
+        #[link(name = "env")]
+        extern {
+            pub fn debug(str_ptr: *const u8, str_len: u32);
+        }
+    }
+
+    pub fn debug(msg: &str) {
+        unsafe { ext::debug(msg.as_ptr(), msg.len() as u32); }
+    }
+
 }
 
 /// Safe wrapper for call context
@@ -103,5 +120,41 @@ impl CallArgs {
             // managed in calling code
             std::mem::forget(result);
         }
+    }
+
+    pub fn params<'a> (&'a self) -> ParamsView<'a> {
+        ParamsView::new(self.context())
+    }
+}
+
+pub struct ParamsView<'a> {
+    raw: &'a [u8],
+}
+
+impl<'a> ParamsView<'a> {
+    fn new(raw: &'a [u8]) -> Self {
+        ParamsView { raw: raw }
+    }
+
+    pub fn address(&self) -> [u8; 20] {
+        let mut addr = [0u8; 20];
+        addr.copy_from_slice(&self.raw[0..20]);
+        addr
+    }
+
+    pub fn sender(&self) -> [u8; 20] {
+        let mut sender = [0u8; 20];
+        sender.copy_from_slice(&self.raw[20..40]);
+        sender
+    }
+
+    pub fn value(&self) -> [u8; 32] {
+        let mut value = [0u8; 32];
+        value.copy_from_slice(&self.raw[40..72]);
+        value
+    }
+
+    pub fn params(&self) -> &[u8] {
+        &self.raw[256..]
     }
 }
