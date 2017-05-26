@@ -150,13 +150,13 @@ impl<'a> ParamsView<'a> {
 
     pub fn origin(&self) -> [u8; 20] {
         let mut origin = [0u8; 20];
-        origin.copy_from_slice(&self.raw[60..80]);
+        origin.copy_from_slice(&self.raw[40..60]);
         origin
     }
 
     pub fn value(&self) -> [u8; 32] {
         let mut value = [0u8; 32];
-        value.copy_from_slice(&self.raw[80..112]);
+        value.copy_from_slice(&self.raw[60..92]);
         value
     }
 
