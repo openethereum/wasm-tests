@@ -156,7 +156,7 @@ impl<'a> ParamsView<'a> {
 
     pub fn value(&self) -> [u8; 32] {
         let mut value = [0u8; 32];
-        value.copy_from_slice(&self.raw[40..72]);
+        value.copy_from_slice(&self.raw[80..112]);
         value
     }
 
