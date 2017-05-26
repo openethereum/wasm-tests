@@ -160,7 +160,7 @@ impl<'a> ParamsView<'a> {
         value
     }
 
-    pub fn params(&self) -> &[u8] {
+    pub fn args(&self) -> &[u8] {
         &self.raw[256..]
     }
 }

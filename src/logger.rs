@@ -9,23 +9,23 @@ fn set_key_from_addr(key: u32, val: &[u8; 20]) {
 	let mut full_key = [0u8; 32];
 	let mut full_val = [0u8; 32];
 
-	helpers::write_u32(&mut full_key[0..4], key);
+	write_u32(&mut full_key[0..4], key);
 	full_val[12..32].copy_from_slice(val);
 
-	storage::write(&full_key, &full_val);
+	let _ = storage::write(&full_key, &full_val);
 }
 
 fn set_key_from_u256(key: u32, val: &[u8; 32]) {
 	let mut full_key = [0u8; 32];
-	helpers::write_u32(&mut full_key[0..4], key);
+	write_u32(&mut full_key[0..4], key);
 
-	storage::write(&full_key, val);
+	let _ = storage::write(&full_key, val);
 }
 
 #[no_mangle]
 pub fn call(descriptor: *mut u8) {
 	// This initializes safe wrapper for contract input and output
-	let mut ctx = CallArgs::from_raw(descriptor);
+	let ctx = CallArgs::from_raw(descriptor);
 
 	set_key_from_addr(1, &ctx.params().address());
 	set_key_from_addr(2, &ctx.params().sender());
