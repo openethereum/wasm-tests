@@ -64,12 +64,12 @@ unsafe fn read_ptr_mut(slc: &[u8]) -> *mut u8 {
     std::ptr::null_mut().offset(read_u32(slc) as isize)
 }
 
-fn read_u32(slc: &[u8]) -> u32 {
+pub fn read_u32(slc: &[u8]) -> u32 {
     use std::ops::Shl;
     (slc[0] as u32) + (slc[1] as u32).shl(8) + (slc[2] as u32).shl(16) + (slc[3] as u32).shl(24)
 }
 
-fn write_u32(dst: &mut [u8], val: u32) {
+pub fn write_u32(dst: &mut [u8], val: u32) {
     dst[0] = (val & 0x000000ff) as u8;
     dst[1] = ((val & 0x0000ff00) >> 8) as u8;
     dst[2] = ((val & 0x00ff0000) >> 16) as u8;
@@ -146,6 +146,12 @@ impl<'a> ParamsView<'a> {
         let mut sender = [0u8; 20];
         sender.copy_from_slice(&self.raw[20..40]);
         sender
+    }
+
+    pub fn origin(&self) -> [u8; 20] {
+        let mut origin = [0u8; 20];
+        origin.copy_from_slice(&self.raw[60..80]);
+        origin
     }
 
     pub fn value(&self) -> [u8; 32] {
