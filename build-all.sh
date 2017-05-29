@@ -4,4 +4,5 @@
 ./build.sh ./src/identity.rs ./target/identity.js ./target/identity.wasm
 ./build.sh ./src/logger.rs ./target/logger.js ./target/logger.wasm
 ./build.sh ./src/dispersion.rs ./target/dispersion.js ./target/dispersion.wasm
+./build.sh ./src/suicidal.rs ./target/suicidal.js ./target/suicidal.wasm
 cp ./target/*.wasm ./compiled/

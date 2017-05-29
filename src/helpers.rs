@@ -41,7 +41,7 @@ pub mod storage {
 
 /// Safe wrapper around debug logging
 pub mod logger {
-    mod ext {
+    mod external {
         #[link(name = "env")]
         extern {
             pub fn debug(str_ptr: *const u8, str_len: u32);
@@ -49,9 +49,23 @@ pub mod logger {
     }
 
     pub fn debug(msg: &str) {
-        unsafe { ext::debug(msg.as_ptr(), msg.len() as u32); }
+        unsafe { external::debug(msg.as_ptr(), msg.len() as u32); }
     }
 
+}
+
+/// Safe wrapper around externalities invokes
+pub mod ext {
+    mod external {
+        #[link(name = "env")]
+        extern {
+            pub fn suicide(refund: *const u8);
+        }
+    }
+
+    pub fn suicide(refund: &[u8; 20]) {
+        unsafe { external::suicide(refund.as_ptr()); }
+    }
 }
 
 /// Safe wrapper for call context
