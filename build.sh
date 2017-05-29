@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p out
+mkdir -p target
 input_file=$1
 output_file=$2
 wasm_file=$3
