@@ -175,6 +175,6 @@ impl<'a> ParamsView<'a> {
     }
 
     pub fn args(&self) -> &[u8] {
-        &self.raw[256..]
+        &self.raw[92..]
     }
 }
