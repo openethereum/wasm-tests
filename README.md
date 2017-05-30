@@ -1,6 +1,6 @@
 # wasm-tests
 
-Replentishable collection of varios WASM compilable contract wxamples, both source and binary for integration testing in Parity.
+Replentishable collection of varios WASM compilable contract examples, both source and binary for integration testing in Parity.
 
 ## Prerequisites for manual building
 
