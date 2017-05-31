@@ -7,7 +7,7 @@ use helpers::CallArgs;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {   
-    let mut ctx = CallArgs::from_raw(desc);
+    let mut ctx = unsafe { CallArgs::from_raw(desc) };
 
     let mut dispersed = Vec::with_capacity(ctx.params().args().len() * 2);
     for e in ctx.params().args() {
@@ -17,5 +17,5 @@ pub fn call(desc: *mut u8) {
 
     *ctx.result_mut() = dispersed;
 
-    ctx.save(desc)
+    unsafe { ctx.save(desc); }
 }

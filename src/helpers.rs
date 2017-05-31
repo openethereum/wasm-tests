@@ -96,18 +96,18 @@ fn write_ptr(dst: &mut [u8], ptr: *mut u8) {
 }
 
 impl CallArgs {
-    pub fn from_raw(ptr: *mut u8) -> CallArgs {
-        let desc_slice = unsafe { slice::from_raw_parts(ptr, 4 * 4) };
+    pub unsafe fn from_raw(ptr: *mut u8) -> CallArgs {
+        let desc_slice = slice::from_raw_parts(ptr, 4 * 4);
 
-        let context_ptr = unsafe { read_ptr_mut(&desc_slice[0..4]) };
+        let context_ptr = read_ptr_mut(&desc_slice[0..4]);
         let context_len = read_u32(&desc_slice[4..8]) as usize;
 
-        let result_ptr = unsafe { read_ptr_mut(&desc_slice[8..12]) };
+        let result_ptr = read_ptr_mut(&desc_slice[8..12]);
         let result_len = read_u32(&desc_slice[12..16]) as usize;
 
         CallArgs {
-            context: unsafe { Box::<[u8]>::from_raw(slice::from_raw_parts_mut(context_ptr, context_len)) },
-            result: unsafe { Vec::from_raw_parts(result_ptr, result_len, result_len) },
+            context: Box::<[u8]>::from_raw(slice::from_raw_parts_mut(context_ptr, context_len)),
+            result: Vec::from_raw_parts(result_ptr, result_len, result_len),
         }
     }
 
@@ -119,8 +119,8 @@ impl CallArgs {
         &mut self.result
     }
 
-    pub fn save(self, ptr: *mut u8) {
-        let dst = unsafe { slice::from_raw_parts_mut(ptr.offset(8), 2 * 4) };
+    pub unsafe fn save(self, ptr: *mut u8) {
+        let dst = slice::from_raw_parts_mut(ptr.offset(8), 2 * 4);
         let context = self.context;
         let mut result = self.result;
 

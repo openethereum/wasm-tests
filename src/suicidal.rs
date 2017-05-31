@@ -7,7 +7,7 @@ use helpers::{CallArgs, ext};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {   
-    let mut ctx = CallArgs::from_raw(desc);
+    let mut ctx = unsafe { CallArgs::from_raw(desc) };
 
     if ctx.params().args().len() > 0 && ctx.params().args()[0] == 127 {
         let mut addr = [0u8; 20];
@@ -15,6 +15,6 @@ pub fn call(desc: *mut u8) {
         ext::suicide(&addr);
     } else {
         *ctx.result_mut() = ctx.params().args().to_vec();
-        ctx.save(desc);
+        unsafe { ctx.save(desc); }
     }
 }

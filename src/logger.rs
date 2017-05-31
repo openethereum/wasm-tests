@@ -25,7 +25,7 @@ fn set_key_from_u256(key: u32, val: &[u8; 32]) {
 #[no_mangle]
 pub fn call(descriptor: *mut u8) {
 	// This initializes safe wrapper for contract input and output
-	let ctx = CallArgs::from_raw(descriptor);
+	let ctx = unsafe { CallArgs::from_raw(descriptor) };
 
 	set_key_from_addr(1, &ctx.params().address());
 	set_key_from_addr(2, &ctx.params().sender());
@@ -33,5 +33,5 @@ pub fn call(descriptor: *mut u8) {
 	set_key_from_u256(4, &ctx.params().value());
 
 	// Saves the wrapper state to commit return stream
-	ctx.save(descriptor);
+	unsafe { ctx.save(descriptor); }
 }
