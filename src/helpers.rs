@@ -73,8 +73,8 @@ pub mod ext {
         unsafe { external::suicide(refund.as_ptr()); }
     }
 
-    pub fn create(endowment: &[u8; 32], code: &[u8]) -> Result<[u8; 32], Error> {
-        let mut result = [0u8; 32];
+    pub fn create(endowment: &[u8; 32], code: &[u8]) -> Result<[u8; 20], Error> {
+        let mut result = [0u8; 20];
         unsafe {
             if external::create(endowment.as_ptr(), code.as_ptr(), code.len() as u32, (&mut result).as_mut_ptr()) == 0 {
                 Ok(result)
