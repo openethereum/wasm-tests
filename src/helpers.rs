@@ -56,15 +56,32 @@ pub mod logger {
 
 /// Safe wrapper around externalities invokes
 pub mod ext {
+    pub struct Error;
+
     mod external {
         #[link(name = "env")]
         extern {
             pub fn suicide(refund: *const u8);
         }
+        #[link(name = "env")]
+        extern {
+            pub fn create(endowment: *const u8, code_ptr: *const u8, code_len: u32, result_ptr: *mut u8) -> i32;
+        }
     }
 
     pub fn suicide(refund: &[u8; 20]) {
         unsafe { external::suicide(refund.as_ptr()); }
+    }
+
+    pub fn create(endowment: &[u8; 32], code: &[u8]) -> Result<[u8; 32], Error> {
+        let mut result = [0u8; 32];
+        unsafe {
+            if external::create(endowment.as_ptr(), code.as_ptr(), code.len() as u32, (&mut result).as_mut_ptr()) == 0 {
+                Ok(result)
+            } else {
+                Err(Error)
+            }
+        }
     }
 }
 
