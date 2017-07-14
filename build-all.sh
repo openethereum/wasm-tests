@@ -6,4 +6,5 @@
 ./build.sh ./src/dispersion.rs ./target/dispersion.js ./target/dispersion.wasm
 ./build.sh ./src/suicidal.rs ./target/suicidal.js ./target/suicidal.wasm
 ./build.sh ./src/creator.rs ./target/creator.js ./target/creator.wasm
+./build.sh ./src/caller.rs ./target/caller.js ./target/caller.wasm
 cp ./target/*.wasm ./compiled/
