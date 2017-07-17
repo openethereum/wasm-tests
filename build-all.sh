@@ -7,4 +7,5 @@
 ./build.sh ./src/suicidal.rs ./target/suicidal.js ./target/suicidal.wasm
 ./build.sh ./src/creator.rs ./target/creator.js ./target/creator.wasm
 ./build.sh ./src/caller.rs ./target/caller.js ./target/caller.wasm
+./build.sh ./src/rterr.rs ./target/rterr.js ./target/rterr.wasm
 cp ./target/*.wasm ./compiled/

@@ -26,9 +26,13 @@ pub fn call(desc: *mut u8) {
 
     let mut hasher = SipHasher::new_with_keys(0, 0);
     hasher.write(&result[..]);
+    let hash = (hasher.finish() & 0x00000000ffffffff) as u32;
+    logger::debug("Hashing succed");
 
     *ctx.result_mut() = Vec::with_capacity(4);
-    write_u32(&mut ctx.result_mut()[..], hasher.finish() as u32);
+    ctx.result_mut().resize(4, 0);
+    write_u32(&mut ctx.result_mut()[..], hash);
 
+    logger::debug("Exiting...");
     unsafe { ctx.save(desc); }
 }
