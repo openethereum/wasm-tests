@@ -6,6 +6,7 @@
 ./build.sh ./src/dispersion.rs ./target/dispersion.js ./target/dispersion.wasm
 ./build.sh ./src/suicidal.rs ./target/suicidal.js ./target/suicidal.wasm
 ./build.sh ./src/creator.rs ./target/creator.js ./target/creator.wasm
-./build.sh ./src/caller.rs ./target/caller.js ./target/caller.wasm
+./build.sh ./src/call_code.rs ./target/call_code.js ./target/call_code.wasm
+./build.sh ./src/call_static.rs ./target/call_static.js ./target/call_static.wasm
 ./build.sh ./src/rterr.rs ./target/rterr.js ./target/rterr.wasm
 cp ./target/*.wasm ./compiled/

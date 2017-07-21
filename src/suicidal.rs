@@ -1,6 +1,4 @@
-#![feature(link_args)]
 #![no_main]
-
 mod helpers;
 
 use helpers::{CallArgs, ext};
