@@ -1,4 +1,3 @@
-#![feature(link_args)]
 #![no_main]
 #![allow(deprecated)] 
 

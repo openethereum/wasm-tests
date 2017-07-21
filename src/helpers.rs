@@ -2,9 +2,6 @@
 
 use std::{self, slice};
 
-#[link_args = "-s NO_EXIT_RUNTIME=1 -s NO_FILESYSTEM=1 -s WASM=1"]
-extern {}
-
 /// Wrapper over storage read/write externs
 /// Storage api is a key-value storage where both key and value are 32 bytes in len
 pub mod storage {
@@ -19,7 +16,7 @@ pub mod storage {
     /// Performs read from storage to the specified slice `dst`
     /// Can return `Error` if data is read from outside of the storage boundaries
     pub fn read(key: &[u8; 32], dst: &mut [u8; 32]) -> Result<(), Error> {
-        match unsafe {
+        match unsafe {  
             let mut dst = dst;
             storage_read(key.as_ptr(), dst.as_mut_ptr())
         } {
