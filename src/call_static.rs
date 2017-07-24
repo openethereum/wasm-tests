@@ -1,5 +1,5 @@
 #![no_main]
-#![allow(deprecated)] 
+#![allow(deprecated)]
 
 mod helpers;
 
@@ -7,7 +7,7 @@ use std::hash::{Hasher, SipHasher};
 use helpers::{CallArgs, ext, write_u32, logger};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {   
+pub fn call(desc: *mut u8) {
     let mut ctx = unsafe { CallArgs::from_raw(desc) };
 
     let addr = [19u8, 7, 123, 251, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -23,7 +23,7 @@ pub fn call(desc: *mut u8) {
         }
     }
 
-    let mut hasher = SipHasher::new_with_keys(0, 0);
+    let mut hasher = SipHasher::new_with_keys(127, 129);
     hasher.write(&result[..]);
     let hash = (hasher.finish() & 0x00000000ffffffff) as u32;
     logger::debug("Hashing succed");
