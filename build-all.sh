@@ -9,4 +9,5 @@
 ./build.sh ./src/call_code.rs ./target/call_code.js ./target/call_code.wasm
 ./build.sh ./src/call_static.rs ./target/call_static.js ./target/call_static.wasm
 ./build.sh ./src/rterr.rs ./target/rterr.js ./target/rterr.wasm
+./build.sh ./src/realloc.rs ./target/realloc.js ./target/realloc.wasm 1
 cp ./target/*.wasm ./compiled/
