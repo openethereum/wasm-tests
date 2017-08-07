@@ -13,13 +13,13 @@ fn get_value_from_key(key: u32, val: &mut [u8; 32]) {
 
 #[no_mangle]
 pub fn call(descriptor: *mut u8) {
-	let mut ctx = unsafe { CallArgs::from_raw(descriptor) };
+    let mut ctx = unsafe { CallArgs::from_raw(descriptor) };
     let mut val = [0u8; 32];
-	get_value_from_key(1, &mut val);
+    get_value_from_key(1, &mut val);
 
     let vec = val.to_vec();
 
     *ctx.result_mut() = vec;
 
-	unsafe { ctx.save(descriptor); }
+    unsafe { ctx.save(descriptor); }
 }
