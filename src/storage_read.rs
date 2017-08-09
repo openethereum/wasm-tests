@@ -1,8 +1,9 @@
 #![no_main]
+#![no_std]
 
-mod helpers;
+extern crate wasm_std;
 
-use helpers::{CallArgs, storage, write_u32};
+use wasm_std::{CallArgs, storage, write_u32};
 
 fn get_value_from_key(key: u32, val: &mut [u8; 32]) {
     let mut val = val;
@@ -17,9 +18,7 @@ pub fn call(descriptor: *mut u8) {
     let mut val = [0u8; 32];
     get_value_from_key(1, &mut val);
 
-    let vec = val.to_vec();
-
-    *ctx.result_mut() = vec;
+    *ctx.result_mut() = val.to_vec().into_boxed_slice();
 
     unsafe { ctx.save(descriptor); }
 }
