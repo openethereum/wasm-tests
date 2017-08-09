@@ -4,15 +4,19 @@ version = "0.1.0"
 authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
+wasm-std = { path = "../wasm-std" }
 
 [[bin]]
 name = "empty"
 path = "src/empty.rs"
 
 [[bin]]
-name = "static"
-path = "src/static.rs"
+name = "suicidal"
+path = "src/suicidal.rs"
 
 [[bin]]
-name = "logger"
-path = "src/logger.rs"
+name = "realloc"
+path = "src/realloc.rs"
+
+[profile.release]
+panic = "abort"

@@ -1,8 +1,9 @@
 #![no_main]
+#![no_std]
 
-mod helpers;
+extern crate wasm_std;
 
-use helpers::logger;
+use wasm_std::logger;
 
 #[no_mangle]
 pub fn call(_desc: *mut u8) {
