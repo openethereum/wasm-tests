@@ -1,11 +1,12 @@
 #![no_main]
+#![no_std]
 
-mod helpers;
+extern crate wasm_std;
 
-use helpers::logger;
+use wasm_std::logger;
 
 #[no_mangle]
 pub fn call(_desc: *mut u8) {
-    let vc = vec![0u8; 5];
-    logger::debug(&format!("Exception will occur here {}", vc[5]));
+    logger::debug("Exception will occur here:");
+    unreachable!();
 }

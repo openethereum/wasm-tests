@@ -9,5 +9,7 @@ wasm-build ./target identity
 wasm-build ./target dispersion
 wasm-build ./target creator
 wasm-build ./target call_code
+wasm-build ./target call_static
+wasm-build ./target rterr
 
 cp ./target/*.wasm ./compiled

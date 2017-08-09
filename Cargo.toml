@@ -38,6 +38,14 @@ path = "src/creator.rs"
 name = "call_code"
 path = "src/call_code.rs"
 
+[[bin]]
+name = "call_static"
+path = "src/call_static.rs"
+
+[[bin]]
+name = "rterr"
+path = "src/rterr.rs"
+
 
 [profile.release]
 panic = "abort"

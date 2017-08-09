@@ -1,10 +1,11 @@
 #![no_main]
+#![no_std]
 #![allow(deprecated)]
 
-mod helpers;
+#[macro_use] extern crate wasm_std;
 
-use std::hash::{Hasher, SipHasher};
-use helpers::{CallArgs, ext, write_u32, logger};
+use core::hash::{Hasher, SipHasher};
+use wasm_std::{CallArgs, ext, write_u32, logger};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
@@ -28,9 +29,9 @@ pub fn call(desc: *mut u8) {
     let hash = (hasher.finish() & 0x00000000ffffffff) as u32;
     logger::debug("Hashing succed");
 
-    *ctx.result_mut() = Vec::with_capacity(4);
-    ctx.result_mut().resize(4, 0);
-    write_u32(&mut ctx.result_mut()[..], hash);
+    let mut result = [0u8; 4];
+    write_u32(&mut result[..], hash);
+    *ctx.result_mut() = result.to_vec().into_boxed_slice();
 
     logger::debug("Exiting...");
     unsafe { ctx.save(desc); }
