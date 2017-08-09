@@ -19,7 +19,7 @@ name = "realloc"
 path = "src/realloc.rs"
 
 [[bin]]
-name = "logger"
+name = "logger" 
 path = "src/logger.rs"
 
 [profile.release]
