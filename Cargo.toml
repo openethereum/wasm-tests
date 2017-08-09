@@ -19,8 +19,25 @@ name = "realloc"
 path = "src/realloc.rs"
 
 [[bin]]
-name = "logger" 
+name = "logger"
 path = "src/logger.rs"
+
+[[bin]]
+name = "identity"
+path = "src/identity.rs"
+
+[[bin]]
+name = "dispersion"
+path = "src/dispersion.rs"
+
+[[bin]]
+name = "creator"
+path = "src/creator.rs"
+
+[[bin]]
+name = "call_code"
+path = "src/call_code.rs"
+
 
 [profile.release]
 panic = "abort"

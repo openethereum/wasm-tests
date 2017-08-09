@@ -5,5 +5,9 @@ wasm-build ./target empty
 wasm-build ./target suicidal
 wasm-build ./target realloc
 wasm-build ./target logger
+wasm-build ./target identity
+wasm-build ./target dispersion
+wasm-build ./target creator
+wasm-build ./target call_code
 
 cp ./target/*.wasm ./compiled
