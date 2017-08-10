@@ -24,7 +24,7 @@ pub fn call(desc: *mut u8) {
         }
     }
 
-    let mut hasher = SipHasher::new_with_keys(127, 129);
+    let mut hasher = SipHasher::new_with_keys(0, 0);
     hasher.write(&result[..]);
     let hash = (hasher.finish() & 0x00000000ffffffff) as u32;
     logger::debug("Hashing succed");
