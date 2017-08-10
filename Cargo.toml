@@ -4,15 +4,51 @@ version = "0.1.0"
 authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
+wasm-std = { git = "https://github.com/nikvolf/wasm-std" }
+
+[[bin]]
+name = "call_code"
+path = "src/call_code.rs"
+
+[[bin]]
+name = "call_static"
+path = "src/call_static.rs"
+
+[[bin]]
+name = "creator"
+path = "src/creator.rs"
+
+[[bin]]
+name = "dispersion"
+path = "src/dispersion.rs"
 
 [[bin]]
 name = "empty"
 path = "src/empty.rs"
 
 [[bin]]
-name = "static"
-path = "src/static.rs"
+name = "identity"
+path = "src/identity.rs"
 
 [[bin]]
 name = "logger"
 path = "src/logger.rs"
+
+[[bin]]
+name = "realloc"
+path = "src/realloc.rs"
+
+[[bin]]
+name = "rterr"
+path = "src/rterr.rs"
+
+[[bin]]
+name = "suicidal"
+path = "src/suicidal.rs"
+
+[[bin]]
+name = "storage_read"
+path = "src/storage_read.rs"
+
+[profile.release]
+panic = "abort"

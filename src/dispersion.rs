@@ -1,11 +1,12 @@
 #![no_main]
+#![no_std]
 
-mod helpers;
+extern crate wasm_std;
 
-use helpers::CallArgs;
+use wasm_std::{CallArgs, Vec};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {   
+pub fn call(desc: *mut u8) {
     let mut ctx = unsafe { CallArgs::from_raw(desc) };
 
     let mut dispersed = Vec::with_capacity(ctx.params().args().len() * 2);
@@ -14,7 +15,7 @@ pub fn call(desc: *mut u8) {
         dispersed.push(e % 19);
     }
 
-    *ctx.result_mut() = dispersed;
+    *ctx.result_mut() = dispersed.into_boxed_slice();
 
     unsafe { ctx.save(desc); }
 }
