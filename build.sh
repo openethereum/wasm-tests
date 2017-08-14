@@ -12,5 +12,6 @@ wasm-build ./target realloc
 wasm-build ./target rterr
 wasm-build ./target suicidal
 wasm-build ./target storage_read
+wasm-build ./target math
 
 cp ./target/*.wasm ./compiled
