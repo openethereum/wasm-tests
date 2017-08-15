@@ -8,7 +8,7 @@ use wasm_std::{CallArgs, bigint};
 #[no_mangle]
 pub fn call(desc: *mut u8) {
     let mut ctx = unsafe { CallArgs::from_raw(desc) };
-
+ 
     let result = {
         let a_param: bigint::U256 = (&ctx.params().args()[0..32]).into();
         let b_param: bigint::U256 = (&ctx.params().args()[32..64]).into();
