@@ -35,6 +35,10 @@ name = "logger"
 path = "src/logger.rs"
 
 [[bin]]
+name = "math"
+path = "src/math.rs"
+
+[[bin]]
 name = "realloc"
 path = "src/realloc.rs"
 
