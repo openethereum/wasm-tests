@@ -17,6 +17,6 @@ Growing collection of varios WASM compilable contract examples, both source and 
 
 All contracts can be also tested in online contract runner.
 
-See this link:
+See this link (works only in Google Chrome and Mozilla Firefox!):
 
 https://fckt.github.io/wasm-contract-runner/
