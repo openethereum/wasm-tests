@@ -12,3 +12,9 @@ Growing collection of varios WASM compilable contract examples, both source and 
 
 ### C/C++
 - to be updated
+
+### Online runner
+
+All contracts can be also tested in online contract runner
+See this link
+https://fckt.github.io/wasm-contract-runner/
