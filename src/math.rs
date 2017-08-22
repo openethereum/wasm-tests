@@ -8,17 +8,24 @@ use wasm_std::{CallArgs, bigint};
 #[no_mangle]
 pub fn call(desc: *mut u8) {
     let mut ctx = unsafe { CallArgs::from_raw(desc) };
- 
+
     let result = {
-        let a_param: bigint::U256 = (&ctx.params().args()[0..32]).into();
-        let b_param: bigint::U256 = (&ctx.params().args()[32..64]).into();
+        let code = ctx.params().args()[0];
 
-        let sum = a_param + b_param;
-        let mut result = [0u8; 32];
+        let a_param: bigint::U256 = (&ctx.params().args()[1..33]).into();
+        let b_param: bigint::U256 = (&ctx.params().args()[33..65]).into();
 
-        sum.to_big_endian(&mut result);
+        let result = match code {
+            0 => { a_param + b_param },
+            1 => { a_param * b_param },
+            2 => { a_param - b_param },
+            _ => { a_param / b_param },
+        };
 
-        result
+        let mut result_bytes = [0u8; 32];
+        result.to_big_endian(&mut result_bytes);
+
+        result_bytes
     };
 
     *ctx.result_mut() = result.to_vec().into_boxed_slice();
