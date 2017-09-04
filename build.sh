@@ -6,6 +6,7 @@ wasm-build ./target call_static
 wasm-build ./target creator
 wasm-build ./target dispersion
 wasm-build ./target empty
+wasm-build ./target externs
 wasm-build ./target identity
 wasm-build ./target logger
 wasm-build ./target realloc
