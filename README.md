@@ -14,11 +14,11 @@ Growing collection of varios WASM compilable contract examples, both source and 
 ### C/C++
 - to be updated
 
-### Your own setup to build contracts
+## Your own setup to build contracts
 
 Along with all prerequisites for manual building listed above, make sure you put cargo `config` file in `.cargo` folder in the root of your project - the same way it is done in this repository. This config file tells cargo to use custom linker which is just a shell script `linker.sh` (and you also need this file in the root of your project). What this sort of "linker" does is just passing/substituting some arguments rust passes while invoking to build contracts. This step ensures minimal runtime usage of resulting WASM binary (`NO_FILESYSTEM`, `NO_EXIT_RUNTIME`, `USE_PTHREADS` flags) and also allows contract binaries to contain dynamic symbols which will be later linked to Parity (or Browser) runtime (`ERROR_ON_UNDEFINED_SYMBOLS` is set to 0).  
 
-### Online runner
+## Online runner
 
 All contracts can be also tested in online contract runner.
 
