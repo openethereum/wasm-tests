@@ -2,9 +2,9 @@
 #![no_std]
 #![allow(deprecated)]
 
-#[macro_use] extern crate wasm_std;
+#[macro_use] extern crate pwasm_std;
 
-use wasm_std::{CallArgs, ext, write_u32, logger};
+use pwasm_std::{CallArgs, ext, write_u32, logger};
 use core::hash::{SipHasher, Hasher};
 
 #[no_mangle]

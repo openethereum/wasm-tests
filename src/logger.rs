@@ -1,9 +1,9 @@
 #![no_main]
 #![no_std]
 
-extern crate wasm_std;
+extern crate pwasm_std;
 
-use wasm_std::{CallArgs, storage, write_u32};
+use pwasm_std::{CallArgs, storage, write_u32};
 
 fn set_key_from_addr(key: u32, val: &[u8; 20]) {
 	let mut full_key = [0u8; 32];
