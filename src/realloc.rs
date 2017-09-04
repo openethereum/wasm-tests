@@ -1,9 +1,9 @@
 #![no_main]
 #![no_std]
 
-extern crate wasm_std;
+extern crate pwasm_std;
 
-use wasm_std::{CallArgs, Vec};
+use pwasm_std::{CallArgs, Vec};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {

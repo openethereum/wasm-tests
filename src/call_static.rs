@@ -2,10 +2,10 @@
 #![no_std]
 #![allow(deprecated)]
 
-#[macro_use] extern crate wasm_std;
+#[macro_use] extern crate pwasm_std;
 
 use core::hash::{Hasher, SipHasher};
-use wasm_std::{CallArgs, ext, write_u32, logger};
+use pwasm_std::{CallArgs, ext, write_u32, logger};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
