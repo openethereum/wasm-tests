@@ -20,7 +20,6 @@ pub fn call(desc: *mut u8) {
     output.extend(&ext::block_hash(0).expect("block_hash to return hash for b0")[..]);
     output.extend(&ext::block_hash(1).expect("block_hash to return hash for b1")[..]);
     output.extend(&ext::coinbase()[..]);
-    output.extend(&ext::coinbase()[..]);
     push_u64(&mut output, ext::timestamp());
     push_u64(&mut output, ext::block_number());
     output.extend(&ext::difficulty()[..]);
