@@ -27,6 +27,10 @@ name = "empty"
 path = "src/empty.rs"
 
 [[bin]]
+name = "externs"
+path = "src/externs.rs"
+
+[[bin]]
 name = "identity"
 path = "src/identity.rs"
 
