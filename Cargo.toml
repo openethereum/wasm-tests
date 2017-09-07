@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
-pwasm-std = { git = "https://github.com/nikvolf/pwasm-std", branch = "store_hash" }
+pwasm-std = { git = "https://github.com/nikvolf/pwasm-std" }
 
 [[bin]]
 name = "call_code"
