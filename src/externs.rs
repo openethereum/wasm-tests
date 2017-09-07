@@ -4,10 +4,17 @@
 extern crate pwasm_std;
 
 use pwasm_std::{ext, Vec, CallArgs, write_u64};
+use pwasm_std::bigint::U256;
 
 fn push_u64(buf: &mut Vec<u8>, val: u64) {
     let mut slc = [0u8; 8];
     write_u64(&mut slc, val);
+    buf.extend(&slc[..]);
+}
+
+fn push_u256(buf: &mut Vec<u8>, val: U256) {
+    let mut slc = [0u8; 32];
+    val.to_big_endian(&mut slc);
     buf.extend(&slc[..]);
 }
 
@@ -22,8 +29,8 @@ pub fn call(desc: *mut u8) {
     output.extend(&ext::coinbase()[..]);
     push_u64(&mut output, ext::timestamp());
     push_u64(&mut output, ext::block_number());
-    output.extend(&ext::difficulty()[..]);
-    output.extend(&ext::gas_limit()[..]);
+    push_u256(&mut output, ext::difficulty());
+    push_u256(&mut output, ext::gas_limit());
 
     *ctx.result_mut() = output.into_boxed_slice();
 
