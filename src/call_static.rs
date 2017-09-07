@@ -6,12 +6,13 @@
 
 use core::hash::{Hasher, SipHasher};
 use pwasm_std::{CallArgs, ext, write_u32, logger};
+use pwasm_std::hash::Address;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
     let mut ctx = unsafe { CallArgs::from_raw(desc) };
 
-    let addr = [19u8, 7, 123, 251, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let addr = Address::from([19u8, 7, 123, 251, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
     let input = [1u8, 2, 3, 5, 7, 11];
     let mut result = vec![0u8; 256];

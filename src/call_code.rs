@@ -5,13 +5,14 @@
 #[macro_use] extern crate pwasm_std;
 
 use pwasm_std::{CallArgs, ext, write_u32, logger};
+use pwasm_std::hash::Address;
 use core::hash::{SipHasher, Hasher};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
     let mut ctx = unsafe { CallArgs::from_raw(desc) };
 
-    let addr = [13u8, 19, 113, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let addr = Address::from([13u8, 19, 113, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
     let input = [1u8, 2, 3, 5, 7, 11];
     let mut result = vec![0u8; 256];

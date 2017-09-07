@@ -12,7 +12,7 @@ pub fn call(desc: *mut u8) {
     if ctx.params().args().len() > 0 && ctx.params().args()[0] == 127 {
         let mut addr = [0u8; 20];
         addr.copy_from_slice(&ctx.params().args()[1..]);
-        ext::suicide(&addr);
+        ext::suicide(&addr.into());
     } else {
         *ctx.result_mut() = ctx.params().args().to_vec().into_boxed_slice();
         unsafe { ctx.save(desc); }
