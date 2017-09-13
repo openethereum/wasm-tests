@@ -11,6 +11,7 @@ wasm-build ./target identity
 wasm-build ./target logger
 wasm-build ./target realloc
 wasm-build ./target rterr
+wasm-build ./target keccak
 wasm-build ./target suicidal
 wasm-build ./target storage_read
 wasm-build ./target math

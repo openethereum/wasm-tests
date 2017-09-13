@@ -51,6 +51,10 @@ name = "rterr"
 path = "src/rterr.rs"
 
 [[bin]]
+name = "keccak"
+path = "src/keccak.rs"
+
+[[bin]]
 name = "suicidal"
 path = "src/suicidal.rs"
 
