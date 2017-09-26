@@ -3,12 +3,10 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{CallArgs, keccak};
+use pwasm_std::keccak;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
-    let res = keccak(ctx.params().args());
-    *ctx.result_mut() = res.0.to_vec().into_boxed_slice();
-    unsafe { ctx.save(desc); }
+    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
+    result.done(keccak(&input).0.to_vec());
 }

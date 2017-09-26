@@ -3,18 +3,17 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{CallArgs, ext};
+use pwasm_std::ext;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
+    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
 
-    if ctx.params().args().len() > 0 && ctx.params().args()[0] == 127 {
+    if input.as_ref().len() > 0 && input.as_ref()[0] == 127 {
         let mut addr = [0u8; 20];
-        addr.copy_from_slice(&ctx.params().args()[1..]);
+        addr.copy_from_slice(&input.as_ref()[1..]);
         ext::suicide(&addr.into());
     } else {
-        *ctx.result_mut() = ctx.params().args().to_vec().into_boxed_slice();
-        unsafe { ctx.save(desc); }
+        result.done(input.as_ref().to_vec());
     }
 }
