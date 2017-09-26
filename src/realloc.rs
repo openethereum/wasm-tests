@@ -3,21 +3,18 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{CallArgs, Vec};
+use pwasm_std::Vec;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
+    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
 
-    let mut data = Vec::with_capacity(1);
-    data.push(0u8);
-    for arg in ctx.params().args() {
-        // NOTE: reallocation happens here. Causes runtime "index out of bounds" if external malloc used
-        // Thus we do not apply wasm_utils::externalize of "_free", "_malloc" here
-        data.push(*arg);
-    }
-
-    *ctx.result_mut() = data.into_boxed_slice();
-
-    unsafe { ctx.save(desc); }
+    result.done({
+        let mut data = Vec::with_capacity(1);
+        data.push(0u8);
+        for arg in input.as_ref() {
+            data.push(*arg);
+        }
+        data
+    });
 }

@@ -3,7 +3,7 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{CallArgs, storage, write_u32};
+use pwasm_std::{ext, storage, write_u32};
 use pwasm_std::bigint::U256;
 use pwasm_std::hash::H256;
 
@@ -25,15 +25,9 @@ fn set_key_from_u256(key: u32, val: U256) {
 }
 
 #[no_mangle]
-pub fn call(descriptor: *mut u8) {
-	// This initializes safe wrapper for contract input and output
-	let ctx = unsafe { CallArgs::from_raw(descriptor) };
-
-	set_key_from_addr(1, &ctx.params().address());
-	set_key_from_addr(2, &ctx.params().sender());
-	set_key_from_addr(3, &ctx.params().origin());
-	set_key_from_u256(4, ctx.params().value());
-
-	// Saves the wrapper state to commit return stream
-	unsafe { ctx.save(descriptor); }
+pub fn call(_descriptor: *mut u8) {
+	set_key_from_addr(1, &ext::address());
+	set_key_from_addr(2, &ext::sender());
+	set_key_from_addr(3, &ext::origin());
+	set_key_from_u256(4, ext::value());
 }

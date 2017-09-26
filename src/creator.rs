@@ -3,18 +3,16 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{CallArgs, ext, logger};
+use pwasm_std::{ext, logger};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
+    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
 
-    if let Ok(addr) = ext::create(ctx.params().value(), ctx.params().args()) {
+    if let Ok(addr) = ext::create(ext::value(), input.as_ref()) {
         logger::debug("Created contractwith code");
-        *ctx.result_mut() = addr.to_vec().into_boxed_slice();
+        result.done(addr.to_vec());
     } else {
         logger::debug("Error creating contract");
     }
-
-    unsafe { ctx.save(desc); }
 }
