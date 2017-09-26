@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cargo build --release --bins --verbose --target wasm32-unknown-emscripten
+cargo build --release --bins --target wasm32-unknown-emscripten
 wasm-build ./target call_code
 wasm-build ./target call_static
 wasm-build ./target creator

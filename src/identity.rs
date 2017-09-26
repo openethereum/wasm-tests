@@ -3,15 +3,9 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::CallArgs;
+use pwasm_std::ext;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
-
-    let sender = ctx.params().sender().to_vec();
-
-    *ctx.result_mut() = sender.to_vec().into_boxed_slice();
-
-    unsafe { ctx.save(desc); }
+    unsafe { pwasm_std::parse_args(desc) }.1.done(ext::sender().to_vec());
 }

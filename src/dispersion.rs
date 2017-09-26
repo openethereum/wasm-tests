@@ -3,19 +3,17 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{CallArgs, Vec};
+use pwasm_std::Vec;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
+    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
 
-    let mut dispersed = Vec::with_capacity(ctx.params().args().len() * 2);
-    for e in ctx.params().args() {
+    let mut dispersed = Vec::with_capacity(input.as_ref().len() * 2);
+    for e in input.as_ref() {
         dispersed.push(*e);
         dispersed.push(e % 19);
     }
 
-    *ctx.result_mut() = dispersed.into_boxed_slice();
-
-    unsafe { ctx.save(desc); }
+    result.done(dispersed);
 }

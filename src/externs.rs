@@ -3,7 +3,7 @@
 
 extern crate pwasm_std;
 
-use pwasm_std::{ext, Vec, CallArgs, write_u64};
+use pwasm_std::{ext, Vec, write_u64};
 use pwasm_std::bigint::U256;
 
 fn push_u64(buf: &mut Vec<u8>, val: u64) {
@@ -20,7 +20,7 @@ fn push_u256(buf: &mut Vec<u8>, val: U256) {
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let mut ctx = unsafe { CallArgs::from_raw(desc) };
+    let (_, result) = unsafe { pwasm_std::parse_args(desc) };
 
     let mut output: Vec<u8> = Vec::with_capacity(64 + 20 + 8 + 8 + 32 + 32);
 
@@ -32,7 +32,5 @@ pub fn call(desc: *mut u8) {
     push_u256(&mut output, ext::difficulty());
     push_u256(&mut output, ext::gas_limit());
 
-    *ctx.result_mut() = output.into_boxed_slice();
-
-    unsafe { ctx.save(desc); }
+    result.done(output);
 }
