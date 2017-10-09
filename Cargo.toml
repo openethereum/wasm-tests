@@ -5,6 +5,8 @@ authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
 pwasm-std = { git = "https://github.com/nikvolf/pwasm-std" }
+pwasm-abi = { git = "https://github.com/nikvolf/pwasm-abi" }
+pwasm-abi-derive = { git = "https://github.com/nikvolf/pwasm-abi", path = "derive" }
 
 [[bin]]
 name = "call_code"
@@ -61,6 +63,10 @@ path = "src/suicidal.rs"
 [[bin]]
 name = "storage_read"
 path = "src/storage_read.rs"
+
+[[bin]]
+name = "abi"
+path = "src/abi.rs"
 
 [profile.release]
 panic = "abort"

@@ -1,49 +1,43 @@
 #![no_main]
 #![no_std]
+#![feature(proc_macro)]
+#![feature(alloc)]
 
 extern crate pwasm_std;
 extern crate pwasm_abi;
-#[macro_use] extern crate pwasm_abi_derive;
+extern crate pwasm_abi_derive;
+extern crate alloc;
 
-use pwasm_std::CallArgs;
-use pwasm_abi_derive::legacy_dispatch;
 
 mod contract {
-    use pwasm_std::CallArgs;
+    use pwasm_std::Vec;
+    use pwasm_abi_derive::legacy_dispatch;
+    use alloc::borrow::Cow;
 
-    #[legacy_dispatch]
-    trait Interface {
-        fn baz(&mut self, p1: u32, p2: bool);
+    #[legacy_dispatch(Endpoint)]
+    pub trait Interface {
+        fn baz(&mut self, p1: u32, p2: bool) -> bool;
     }
 
-    struct Instance {
-        pub args: CallArgs,
-    }
+    pub struct Instance;
 
     impl Interface for Instance {
-        fn baz(&mut self, p1: u32, p2: bool);
-    }
-
-    impl Instance {
-        fn new(args: CallArgs) -> Self {
-            Instance { args: args }
-        }
-    }
-
-    impl Endpoint {
-        fn new(args: CallArgs) -> Self {
-            Endpoint::new(Instance::new(args))
+        fn baz(&mut self, p1: u32, p2: bool) -> bool {
+            p2 && !(p1 == 0)
         }
     }
 }
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
-    let endpoint = contract::Endpoint::new(unsafe { CallArgs::from_raw(desc) });
-    endpoint.dispatch
+    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
+    let mut endpoint = contract::Endpoint::new(contract::Instance);
+    result.done(endpoint.dispatch(&*input))
 }
 
 #[no_mangle]
-pub fn create(_desc: *mut u8) {
-
+pub fn create(desc: *mut u8) {
+    let (input, _) = unsafe { pwasm_std::parse_args(desc) };
+    let mut endpoint = contract::Endpoint::new(contract::Instance);
+    endpoint.dispatch_ctor(&*input);
 }
