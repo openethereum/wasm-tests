@@ -31,6 +31,10 @@ name = "externs"
 path = "src/externs.rs"
 
 [[bin]]
+name = "events"
+path = "src/events.rs"
+
+[[bin]]
 name = "identity"
 path = "src/identity.rs"
 
