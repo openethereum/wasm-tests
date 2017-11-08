@@ -16,5 +16,6 @@ wasm-build ./target keccak
 wasm-build ./target suicidal
 wasm-build ./target storage_read
 wasm-build ./target math
+wasm-build ./target mem
 
 cp ./target/*.wasm ./compiled

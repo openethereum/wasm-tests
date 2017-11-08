@@ -66,6 +66,10 @@ path = "src/suicidal.rs"
 name = "storage_read"
 path = "src/storage_read.rs"
 
+[[bin]]
+name = "mem"
+path = "src/mem.rs"
+
 [profile.release]
 panic = "abort"
 lto = true
