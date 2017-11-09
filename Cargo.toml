@@ -68,3 +68,4 @@ path = "src/storage_read.rs"
 
 [profile.release]
 panic = "abort"
+lto = true
