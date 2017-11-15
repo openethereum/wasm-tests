@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/paritytech/wasm-tests.svg?branch=ci-setup)](https://travis-ci.org/paritytech/wasm-tests)
 # wasm-tests
 
 Growing collection of varios WASM compilable contract examples, both source and binary for integration testing in Parity.
 
+[![Build Status](https://travis-ci.org/paritytech/wasm-tests.svg?branch=ci-setup)](https://travis-ci.org/paritytech/wasm-tests)
 ## Prerequisites for manual building
 
 ### Rust
