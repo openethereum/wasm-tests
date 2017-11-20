@@ -35,7 +35,7 @@ dependencies = [
 [[package]]
 name = "pwasm-std"
 version = "0.1.0"
-source = "git+https://github.com/paritytech/pwasm-std#fec291c07998c865cf20b171d3057344cc364a8d"
+source = "git+https://github.com/paritytech/pwasm-std#b91ca39c640373ed215dcb9b7d5a0bdd112aa28f"
 dependencies = [
  "bigint 4.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "byteorder 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -80,7 +80,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "wasm-alloc"
 version = "0.1.0"
-source = "git+https://github.com/paritytech/pwasm-std#fec291c07998c865cf20b171d3057344cc364a8d"
+source = "git+https://github.com/paritytech/pwasm-std#b91ca39c640373ed215dcb9b7d5a0bdd112aa28f"
 dependencies = [
  "wasm-libc 0.1.0 (git+https://github.com/paritytech/pwasm-std)",
 ]
@@ -88,7 +88,7 @@ dependencies = [
 [[package]]
 name = "wasm-libc"
 version = "0.1.0"
-source = "git+https://github.com/paritytech/pwasm-std#fec291c07998c865cf20b171d3057344cc364a8d"
+source = "git+https://github.com/paritytech/pwasm-std#b91ca39c640373ed215dcb9b7d5a0bdd112aa28f"
 
 [[package]]
 name = "wasm-tests"
