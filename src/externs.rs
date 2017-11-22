@@ -24,8 +24,8 @@ pub fn call(desc: *mut u8) {
 
     let mut output: Vec<u8> = Vec::with_capacity(64 + 20 + 8 + 8 + 32 + 32);
 
-    output.extend(&ext::block_hash(0).expect("block_hash to return hash for b0")[..]);
-    output.extend(&ext::block_hash(1).expect("block_hash to return hash for b1")[..]);
+    output.extend(&ext::block_hash(0)[..]);
+    output.extend(&ext::block_hash(1)[..]);
     output.extend(&ext::coinbase()[..]);
     push_u64(&mut output, ext::timestamp());
     push_u64(&mut output, ext::block_number());
