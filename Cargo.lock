@@ -47,7 +47,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "pwasm-std"
-version = "0.1.1"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "bigint 4.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -94,7 +94,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "wasm-tests"
 version = "0.1.0"
 dependencies = [
- "pwasm-std 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "pwasm-std 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [metadata]
@@ -105,7 +105,7 @@ dependencies = [
 "checksum parity-hash 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "fdd741c00934b85b6fe9d7520274962f2a73a12351c96b2ac938f68afad6b213"
 "checksum pwasm-alloc 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7a61e7a9bfd7bdf92cde93dc7f4d53aad318ffefb46b96b57458ddffe49a1357"
 "checksum pwasm-libc 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "160a70ad233b97bce3ee47e3d18bbf9aaf7f9985f59cd2b0718b26193811e6cd"
-"checksum pwasm-std 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "e1e2b0769bac7a06618f00c685f38897db8d5104de3514757215c67cd1bf7f7c"
+"checksum pwasm-std 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "3efb8d5871c967b23838649b804a3a91ad88837ca2d5dc570fd1fe2bd8ca31c5"
 "checksum rustc-hex 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "0ceb8ce7a5e520de349e1fa172baeba4a9e8d5ef06c47471863530bc4972ee1e"
 "checksum rustc_version 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b9743a7670d88d5d52950408ecdb7c71d8986251ab604d4689dd2ca25c9bca69"
 "checksum semver 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7a3186ec9e65071a2095434b1f5bb24838d4e8e130f584c790f6033c79943537"
