@@ -11,4 +11,4 @@ script:
   - docker exec -it emscripten sh -c "cargo install --git https://github.com/paritytech/wasm-utils wasm-build"
   - docker exec -it emscripten sh -c "cargo install --git https://github.com/paritytech/parity/ pwasm-run-test --force"
   - docker exec -it emscripten sh -c "./build.sh"
-  - RUST_LOG=wasm=trace pwasm-run-test ./json/*.json
+  - docker exec -it emscripten sh -c "RUST_LOG=wasm=trace pwasm-run-test ./json/*.json"
