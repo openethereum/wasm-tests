@@ -2,8 +2,7 @@
 #![no_std]
 
 extern crate pwasm_std;
-
-use pwasm_std::bigint;
+extern crate bigint;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {

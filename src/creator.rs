@@ -2,8 +2,10 @@
 #![no_std]
 
 extern crate pwasm_std;
+extern crate pwasm_ethereum;
 
-use pwasm_std::{ext, logger};
+use pwasm_std::logger;
+use pwasm_ethereum::ext;
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {

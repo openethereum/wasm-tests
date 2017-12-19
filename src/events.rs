@@ -2,8 +2,9 @@
 #![no_std]
 
 extern crate pwasm_std;
+extern crate pwasm_ethereum;
 
-use pwasm_std::ext::log;
+use pwasm_ethereum::ext::log;
 use pwasm_std::keccak;
 use pwasm_std::hash::H256;
 

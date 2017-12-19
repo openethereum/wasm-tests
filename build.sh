@@ -19,3 +19,4 @@ wasm-build ./target math
 wasm-build ./target mem
 
 cp ./target/*.wasm ./compiled
+    

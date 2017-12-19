@@ -3,10 +3,12 @@
 #![allow(deprecated)]
 
 #[macro_use] extern crate pwasm_std;
+extern crate pwasm_ethereum;
 
-use core::hash::{Hasher, SipHasher};
-use pwasm_std::{ext, write_u32, logger};
+use pwasm_std::{write_u32, logger};
 use pwasm_std::hash::Address;
+use pwasm_ethereum::ext;
+use core::hash::{SipHasher, Hasher};
 
 #[no_mangle]
 pub fn call(desc: *mut u8) {
@@ -16,7 +18,7 @@ pub fn call(desc: *mut u8) {
 
     let input = [1u8, 2, 3, 5, 7, 11];
     let mut temp = vec![0u8; 256];
-    match ext::static_call(&addr, &input, &mut temp[..]) {
+    match ext::static_call(20000, &addr, &input, &mut temp[..]) {
         Ok(_) => {
             logger::debug("Call succeed");
         },
