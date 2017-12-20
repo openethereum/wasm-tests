@@ -2,9 +2,12 @@
 #![no_std]
 
 extern crate pwasm_std;
+extern crate pwasm_ethereum;
+extern crate bigint;
 
-use pwasm_std::{ext, Vec, write_u64};
-use pwasm_std::bigint::U256;
+use pwasm_std::{Vec, write_u64};
+use pwasm_ethereum::ext;
+use bigint::U256;
 
 fn push_u64(buf: &mut Vec<u8>, val: u64) {
     let mut slc = [0u8; 8];
