@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cargo build --release --bins --target wasm32-unknown-emscripten --features "pwasm-std/panic_with_msg"
+wasm-build ./target call
 wasm-build ./target call_code
 wasm-build ./target call_static
 wasm-build ./target creator
@@ -19,4 +20,3 @@ wasm-build ./target math
 wasm-build ./target mem
 
 cp ./target/*.wasm ./compiled
-    
