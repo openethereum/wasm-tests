@@ -9,6 +9,10 @@ pwasm-ethereum = { git = "https://github.com/nikvolf/pwasm-ethereum" }
 bigint = { version = "4", default-features = false }
 
 [[bin]]
+name = "call"
+path = "src/call.rs"
+
+[[bin]]
 name = "call_code"
 path = "src/call_code.rs"
 
