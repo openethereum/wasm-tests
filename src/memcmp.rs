@@ -14,7 +14,7 @@ extern "C" {
 pub fn call(desc: *mut u8) {
 	let (input, result) = unsafe { pwasm_std::parse_args(desc) };
 
-	let result_cmp = unsafe { memcmp(input.as_ptr(), vec![1, 1, 1].as_ptr(), 3) };
+	let result_cmp = unsafe { memcmp(input.as_ptr(), vec![1u8, 1, 1].as_ptr(), 3) };
 
 	let res: Vec<u8> = vec![
 		(result_cmp as u32 & 0x000000ff) as u8,
