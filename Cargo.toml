@@ -76,6 +76,10 @@ path = "src/storage_read.rs"
 name = "mem"
 path = "src/mem.rs"
 
+[[bin]]
+name = "memcmp"
+path = "src/memcmp.rs"
+
 [profile.release]
 panic = "abort"
 lto = true

@@ -18,5 +18,6 @@ wasm-build ./target suicidal
 wasm-build ./target storage_read
 wasm-build ./target math
 wasm-build ./target mem
+wasm-build ./target memcmp
 
 cp ./target/*.wasm ./compiled
