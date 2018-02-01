@@ -43,7 +43,7 @@ dependencies = [
 [[package]]
 name = "pwasm-ethereum"
 version = "0.1.0"
-source = "git+https://github.com/nikvolf/pwasm-ethereum#d8754955f5a62abecfd486f0eaa836a025906125"
+source = "git+https://github.com/nikvolf/pwasm-ethereum#8716512c5825bb8b62c84b987b70247cf31dabad"
 dependencies = [
  "bigint 4.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "byteorder 1.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
