@@ -83,3 +83,7 @@ path = "src/memcmp.rs"
 [profile.release]
 panic = "abort"
 lto = true
+
+[replace]
+"pwasm-std:0.3.0" = { git = "https://github.com/paritytech/pwasm-std" }
+"pwasm-std:0.3.2" = { git = "https://github.com/paritytech/pwasm-std" }
