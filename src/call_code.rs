@@ -1,4 +1,3 @@
-#![no_main]
 #![no_std]
 #![allow(deprecated)]
 
@@ -7,18 +6,17 @@ extern crate pwasm_ethereum;
 
 use pwasm_std::{write_u32, logger};
 use pwasm_std::hash::Address;
-use pwasm_ethereum::ext;
+use pwasm_ethereum::{call_code, ret};
 use core::hash::{SipHasher, Hasher};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {
-    let (_, result) = unsafe { pwasm_std::parse_args(desc) };
+pub fn call() {
 
     let addr = Address::from([13u8, 19, 113, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
     let input = [1u8, 2, 3, 5, 7, 11];
     let mut temp = vec![0u8; 256];
-    match ext::call_code(20000, &addr, &input, &mut temp[..]) {
+    match call_code(20000, &addr, &input, &mut temp[..]) {
         Ok(_) => {
             logger::debug("Call succeed");
         },
@@ -37,5 +35,5 @@ pub fn call(desc: *mut u8) {
 
     logger::debug("Exiting...");
 
-    result.done(res.to_vec());
+    ret(&res[..]);
 }
