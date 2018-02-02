@@ -6,6 +6,6 @@ use pwasm_std::logger;
 
 #[no_mangle]
 pub fn call() {
-    logger::debug("Exception will occur here:");
-    unreachable!();
+	logger::debug("Exception will occur here:");
+	unreachable!();
 }
