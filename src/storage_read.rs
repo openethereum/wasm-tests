@@ -1,5 +1,4 @@
 #![no_std]
-#![feature(start)]
 
 extern crate pwasm_std;
 extern crate pwasm_ethereum;
@@ -18,9 +17,4 @@ fn get_value_from_key(key: u32) -> [u8; 32] {
 pub fn call() {
     let val: [u8; 32] = get_value_from_key(1);
     ret(&val[..])
-}
-
-#[start]
-pub fn main(_: isize, _: *const *const u8) -> isize {
-    0
 }
