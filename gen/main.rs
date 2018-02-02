@@ -17,7 +17,7 @@ version = "0.1.0"
 authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
-pwasm-std = { git = "https://github.com/paritytech/pwasm-std" }
+pwasm-std = { git = "https://github.com/paritytech/pwasm-std", branch = "use-rlibc" }
 pwasm-ethereum = { git = "https://github.com/nikvolf/pwasm-ethereum" }
 bigint = { version = "4", default-features = false }
 
@@ -27,7 +27,7 @@ path = "main.rs"
 crate-type = ["cdylib"]
 
 [replace]
-"pwasm-std:0.3.2" = { git = "https://github.com/paritytech/pwasm-std" }
+"pwasm-std:0.3.2" = { git = "https://github.com/paritytech/pwasm-std", branch = "use-rlibc" }
 	"#;
 
 	let target_toml = toml.replace("$file_name", file_name);

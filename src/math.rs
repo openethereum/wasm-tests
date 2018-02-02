@@ -1,18 +1,19 @@
-#![no_main]
 #![no_std]
 
-extern crate pwasm_std;
 extern crate bigint;
+extern crate pwasm_ethereum;
+
+use pwasm_ethereum::{ret, input};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {
-    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
+pub fn call() {
+    let input = input();
 
-    result.done({
-        let code = input.as_ref()[0];
+    ret(&{
+        let code = input[0];
 
-        let a_param: bigint::U256 = (&input.as_ref()[1..33]).into();
-        let b_param: bigint::U256 = (&input.as_ref()[33..65]).into();
+        let a_param: bigint::U256 = (&input[1..33]).into();
+        let b_param: bigint::U256 = (&input[33..65]).into();
 
         let result = match code {
             0 => { a_param + b_param },
@@ -25,5 +26,5 @@ pub fn call(desc: *mut u8) {
         result.to_big_endian(&mut result_bytes);
 
         result_bytes
-    }.to_vec())
+    })
 }

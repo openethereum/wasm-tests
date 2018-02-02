@@ -8,10 +8,10 @@ use pwasm_ethereum::{input, ret, create, value};
 
 #[no_mangle]
 pub fn call() {
-    if let Ok(addr) = create(value(), &input()) {
-        logger::debug("Created contractwith code");
-        ret(&addr[..]);
-    } else {
-        logger::debug("Error creating contract");
-    }
+	if let Ok(addr) = create(value(), &input()) {
+		logger::debug("Created contractwith code");
+		ret(&addr[..]);
+	} else {
+		logger::debug("Error creating contract");
+	}
 }

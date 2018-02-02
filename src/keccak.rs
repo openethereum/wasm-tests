@@ -1,12 +1,12 @@
-#![no_main]
 #![no_std]
 
 extern crate pwasm_std;
+extern crate pwasm_ethereum;
 
 use pwasm_std::keccak;
+use pwasm_ethereum::{ret, input};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {
-    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
-    result.done(keccak(&input).0.to_vec());
+pub fn call() {
+	ret(&keccak(&input()));
 }
