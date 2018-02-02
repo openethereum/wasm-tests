@@ -1,19 +1,16 @@
-#![no_main]
 #![no_std]
 
 extern crate pwasm_std;
 extern crate pwasm_ethereum;
 
 use pwasm_std::logger;
-use pwasm_ethereum::ext;
+use pwasm_ethereum::{input, ret, create, value};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {
-    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
-
-    if let Ok(addr) = ext::create(ext::value(), input.as_ref()) {
+pub fn call() {
+    if let Ok(addr) = create(value(), &input()) {
         logger::debug("Created contractwith code");
-        result.done(addr.to_vec());
+        ret(&addr[..]);
     } else {
         logger::debug("Error creating contract");
     }
