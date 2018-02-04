@@ -5,8 +5,8 @@ rust:
 sudo: required
 services:
   - docker
-before_install:
-  - docker run -dit --name emscripten -v $(pwd):/src alexfro/rust-wasm32-unknown-emscripten bash
 script:
-  - docker exec -it emscripten sh -c "cargo install --git https://github.com/paritytech/wasm-utils wasm-build"
-  - docker exec -it emscripten sh -c "./build.sh"
+  - rustup target add wasm32-unknown-unknown --toolchain nightly
+  - cargo install --git https://github.com/paritytech/wasm-utils wasm-build
+  - ./build.sh
+  

@@ -1,19 +1,26 @@
-#![no_main]
 #![no_std]
 
 extern crate pwasm_std;
+extern crate pwasm_ethereum;
 
 use pwasm_std::Vec;
+use pwasm_ethereum::{input, ret};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {
-    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
+pub fn call() {
+	let mut input = input();
+	unsafe {
+		let cap = input.capacity();
+		input.set_len(cap);
+	}
 
-    let mut dispersed = Vec::with_capacity(input.as_ref().len() * 2);
-    for e in input.as_ref() {
-        dispersed.push(*e);
-        dispersed.push(e % 19);
-    }
+	// let mut dispersed = Vec::with_capacity(input.len() * 2);
+	let mut dispersed = Vec::with_capacity(5);
 
-    result.done(dispersed);
+	for e in input.iter() {
+		 dispersed.push(*e);
+		 dispersed.push(e % 19);
+	}
+
+	ret(&dispersed[..])
 }
