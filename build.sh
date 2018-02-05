@@ -1,5 +1,6 @@
 #!/bin/sh
 
+./build-test.sh alloc &&
 ./build-test.sh call &&
 ./build-test.sh call_code &&
 ./build-test.sh call_static &&
