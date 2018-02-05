@@ -16,4 +16,5 @@
 ./build-test.sh keccak &&
 ./build-test.sh suicidal &&
 ./build-test.sh storage_read &&
-./build-test.sh math
+./build-test.sh math &&
+./build-test.sh setter
