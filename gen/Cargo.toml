@@ -1,0 +1,8 @@
+[package]
+name = "gen"
+version = "0.1.0"
+authors = ["NikVolf <nikvolf@gmail.com>"]
+
+[[bin]]
+name = "gen"
+path = "main.rs"

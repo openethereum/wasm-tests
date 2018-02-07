@@ -8,11 +8,8 @@ use pwasm_std::Vec;
 #[no_mangle]
 pub fn call() {
 	ext::ret(&{
-		let mut data = Vec::with_capacity(1);
-		data.push(0u8);
-		for arg in ext::input().iter() {
-			data.push(*arg);
-		}
+		let mut data = Vec::with_capacity(450 * 1024);
+		data.extend_from_slice(&[5u8; 450*1024][..]);
 		data
 	});
 }

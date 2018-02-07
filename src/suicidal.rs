@@ -1,19 +1,20 @@
-#![no_main]
+
 #![no_std]
 
 extern crate pwasm_std;
+extern crate pwasm_ethereum;
 
-use pwasm_std::ext;
+use pwasm_ethereum::{suicide, ret, input};
 
 #[no_mangle]
-pub fn call(desc: *mut u8) {
-    let (input, result) = unsafe { pwasm_std::parse_args(desc) };
+pub fn call() {
+	let input = input();
 
-    if input.as_ref().len() > 0 && input.as_ref()[0] == 127 {
-        let mut addr = [0u8; 20];
-        addr.copy_from_slice(&input.as_ref()[1..]);
-        ext::suicide(&addr.into());
-    } else {
-        result.done(input.as_ref().to_vec());
-    }
+	if input.len() > 0 && input[0] == 127 {
+		let mut addr = [0u8; 20];
+		addr.copy_from_slice(&input[1..]);
+		suicide(&addr.into());
+	} else {
+		ret(&input);
+	}
 }

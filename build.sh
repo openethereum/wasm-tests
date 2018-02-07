@@ -1,21 +1,20 @@
 #!/bin/sh
 
-cargo build --release --bins --target wasm32-unknown-emscripten --features "pwasm-std/panic_with_msg"
-wasm-build ./target call_code
-wasm-build ./target call_static
-wasm-build ./target creator
-wasm-build ./target dispersion
-wasm-build ./target empty
-wasm-build ./target externs
-wasm-build ./target events
-wasm-build ./target identity
-wasm-build ./target logger
-wasm-build ./target realloc
-wasm-build ./target rterr
-wasm-build ./target keccak
-wasm-build ./target suicidal
-wasm-build ./target storage_read
-wasm-build ./target math
-wasm-build ./target mem
-
-cp ./target/*.wasm ./compiled
+./build-test.sh alloc &&
+./build-test.sh call &&
+./build-test.sh call_code &&
+./build-test.sh call_static &&
+./build-test.sh creator &&
+./build-test.sh dispersion &&
+./build-test.sh empty &&
+./build-test.sh externs &&
+./build-test.sh events &&
+./build-test.sh identity &&
+./build-test.sh logger &&
+./build-test.sh realloc &&
+./build-test.sh rterr &&
+./build-test.sh keccak &&
+./build-test.sh suicidal &&
+./build-test.sh storage_read &&
+./build-test.sh math &&
+./build-test.sh setter
