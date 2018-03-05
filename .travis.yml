@@ -6,7 +6,6 @@ sudo: required
 services:
   - docker
 script:
-  - rustup target add wasm32-unknown-unknown --toolchain nightly
+  - rustup target add wasm32-unknown-unknown
   - cargo install --git https://github.com/paritytech/wasm-utils wasm-build
   - ./build.sh
-  
