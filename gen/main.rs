@@ -51,11 +51,5 @@ crate-type = ["cdylib"]
 		let mut f = fs::File::create(toml_path.clone()).expect(&format!("failed to create \"{}\" file", toml_path.to_string_lossy()));
 		::std::io::Write::write_all(&mut f, &target_toml.as_bytes()[..])
 			.expect("Failed to write toml");
-
-		let mut rust_toolchain_path = crate_dir_path.clone();
-		rust_toolchain_path.push("rust-toolchain");
-		let mut f = fs::File::create(rust_toolchain_path.clone()).expect(&format!("failed to create \"{}\" file", rust_toolchain_path.to_string_lossy()));
-		::std::io::Write::write_all(&mut f, &"nightly-2018-02-05".as_bytes()[..])
-			.expect("Failed to write toml");
 	}
 }
