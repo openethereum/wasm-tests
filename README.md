@@ -8,7 +8,7 @@ Growing collection of varios WASM compilable contract examples, both source and 
 ### Rust
 
 - Rust with `wasm32-unknown-unknown` target
-- wasm build util, run `cargo install --git https://github.com/paritytech/wasm-utils wasm-build` to install
+- wasm-build util, run `cargo install pwasm-utils` to install
 - bash to run `./build.sh`
 
 ### C/C++
