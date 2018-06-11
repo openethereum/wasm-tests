@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 TEST_NAME=$1
 
 cargo run --manifest-path ./gen/Cargo.toml -- $TEST_NAME &&
