@@ -20,3 +20,4 @@ set -e
 ./build-rust-test.sh storage_read
 ./build-rust-test.sh math
 ./build-rust-test.sh setter
+./build-wat.sh recursive
