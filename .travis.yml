@@ -5,6 +5,11 @@ rust:
 sudo: required
 services:
   - docker
+
+before_install:
+  # Install wasm toolchain and put it in the PATH
+  - WATERFALL_BUILD=31834 ./wasm-install.sh
+  - export PATH=$PATH:./wasm-install/bin
 script:
   - rustup target add wasm32-unknown-unknown
   - cargo install pwasm-utils --version 0.1
