@@ -8,4 +8,4 @@ services:
 script:
   - rustup target add wasm32-unknown-unknown
   - cargo install pwasm-utils --version 0.1
-  - ./build.sh
+  - ./build-all.sh
