@@ -17,14 +17,19 @@ version = "0.1.0"
 authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
-pwasm-std = "0.5.0"
-pwasm-ethereum = "0.1.0"
+pwasm-std = "0.9.0"
+pwasm-ethereum = "0.5.0"
 bigint = { version = "4", default-features = false }
 
 [lib]
 name = "$file_name"
 path = "main.rs"
 crate-type = ["cdylib"]
+
+[profile.release]
+panic = "abort"
+lto = true
+opt-level = "z"
 "#;
 
 	let target_toml = toml.replace("$file_name", file_name);
