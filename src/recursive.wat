@@ -1,17 +1,6 @@
 (module
-	(type (;0;) (func (param i32)))
-	(type (;1;) (func (result i32)))
-	(type (;2;) (func (param i32 i32)))
-	(type (;3;) (func))
-	(type (;4;) (func (param i32 i32 i32) (result i32)))
-	(type (;5;) (func (param i32 i32) (result i32)))
-	(type (;6;) (func (param i32) (result i32)))
-	(type (;7;) (func (param i32 i32 i32)))
 	(import "env" "fetch_input" (func $fetch_input (param i32)))
 	(import "env" "input_length" (func $input_length (result i32)))
-	(import "env" "panic" (func (;2;) (type 2)))
-	(import "env" "ret" (func (;3;) (type 2)))
-	(import "env" "suicide" (func (;4;) (type 0)))
 
 
 	(func (export "call")
