@@ -22,6 +22,7 @@ authors = ["NikVolf <nikvolf@gmail.com>"]
 pwasm-std = {}
 pwasm-ethereum = {}
 bigint = {{ version = "4", default-features = false }}
+parity-hash = {{ version = "1", default-features = false }}
 
 [lib]
 name = "$file_name"
