@@ -3,9 +3,9 @@ use std::path::PathBuf;
 
 fn main() {
 	let args = env::args().collect::<Vec<_>>();
-	let (file_name, pwasm_ethereum_version, pwasm_std_version) = match args.len() {
-		2 => (&args[1], r#""0.5.0""#.to_string(), r#""0.9.0""#),
-		3 => (&args[1], format!(r#"{{ git = "https://github.com/paritytech/pwasm-ethereum", branch = "kip4", features = [{}] }}"#, args[2].split(",").map(|s| format!(r#""{}""#, s)).collect::<Vec<_>>().join(", ")), r#""0.10.0""#),
+	let (file_name, pwasm_ethereum_version) = match args.len() {
+		2 => (&args[1], r#""0.6.1""#.to_string()),
+		3 => (&args[1], format!(r#"{{ git = "https://github.com/paritytech/pwasm-ethereum", branch = "kip4", features = [{}] }}"#, args[2].split(",").map(|s| format!(r#""{}""#, s)).collect::<Vec<_>>().join(", "))),
 		_ => {
 			println!("Usage: {} gen <test.rs>", args[0]);
 			return;
@@ -19,7 +19,7 @@ version = "0.1.0"
 authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
-pwasm-std = {}
+pwasm-std = "0.10.0"
 pwasm-ethereum = {}
 bigint = {{ version = "4", default-features = false }}
 parity-hash = {{ version = "1", default-features = false }}
@@ -33,7 +33,7 @@ crate-type = ["cdylib"]
 panic = "abort"
 lto = true
 opt-level = "z"
-"#, pwasm_std_version, pwasm_ethereum_version);
+"#, pwasm_ethereum_version);
 
 	let target_toml = toml.replace("$file_name", file_name);
 
