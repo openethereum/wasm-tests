@@ -18,3 +18,6 @@ pub fn call() {
 		ret(&input);
 	}
 }
+
+#[no_mangle]
+pub fn deploy() { }

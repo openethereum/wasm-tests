@@ -37,3 +37,6 @@ pub fn call() {
 
 	ret(&res[..]);
 }
+
+#[no_mangle]
+pub fn deploy() { }

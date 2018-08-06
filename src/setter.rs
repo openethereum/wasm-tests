@@ -16,3 +16,6 @@ pub fn call() {
 		ext::write(&key, &val);
 	}
 }
+
+#[no_mangle]
+pub fn deploy() { }

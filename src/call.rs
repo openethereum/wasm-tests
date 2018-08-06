@@ -24,3 +24,6 @@ pub fn call() {
 
 	ret(&[]);
 }
+
+#[no_mangle]
+pub fn deploy() { }

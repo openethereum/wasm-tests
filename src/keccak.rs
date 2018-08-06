@@ -10,3 +10,6 @@ use pwasm_ethereum::{ret, input};
 pub fn call() {
 	ret(&keccak(&input()));
 }
+
+#[no_mangle]
+pub fn deploy() { }

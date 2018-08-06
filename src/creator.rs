@@ -15,3 +15,6 @@ pub fn call() {
 		logger::debug("Error creating contract");
 	}
 }
+
+#[no_mangle]
+pub fn deploy() { }

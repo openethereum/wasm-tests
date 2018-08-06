@@ -21,3 +21,6 @@ pub fn call() {
 
 	ext::ret(&reverse_input);
 }
+
+#[no_mangle]
+pub fn deploy() { }

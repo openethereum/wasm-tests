@@ -18,3 +18,6 @@ pub fn call() {
 	let val: [u8; 32] = get_value_from_key(1);
 	ret(&val[..])
 }
+
+#[no_mangle]
+pub fn deploy() { }

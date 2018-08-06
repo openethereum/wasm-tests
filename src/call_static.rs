@@ -35,3 +35,6 @@ pub fn call() {
 	logger::debug("Exiting...");
 	ret(&res[..]);
 }
+
+#[no_mangle]
+pub fn deploy() { }

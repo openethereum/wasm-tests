@@ -28,3 +28,6 @@ pub fn call() {
 		result_bytes
 	})
 }
+
+#[no_mangle]
+pub fn deploy() { }

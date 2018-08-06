@@ -9,3 +9,6 @@ pub fn call() {
 	logger::debug("Exception will occur here:");
 	unreachable!();
 }
+
+#[no_mangle]
+pub fn deploy() { }

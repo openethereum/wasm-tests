@@ -32,3 +32,6 @@ pub fn call() {
 	set_key_from_addr(3, &ext::origin());
 	set_key_from_u256(4, ext::value());
 }
+
+#[no_mangle]
+pub fn deploy() { }
