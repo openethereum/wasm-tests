@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # this script is intended to be used from .travis.yml.
 # Takes an environment variable WATERFALL_BUILD to download a
