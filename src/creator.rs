@@ -20,7 +20,7 @@ pub fn call() {
 		logger::debug("Error creating contract");
 	}
 
-	if let Ok(addr) = create2(value() / U256::from(2), H256::default(), &input()) {
+	if let Ok(addr) = create2(value() / U256::from(2), H256::from([5u8].as_ref()), &input()) {
 		logger::debug("Created contract with code and salt");
 		(&mut r[0..20]).copy_from_slice(&addr[..]);
 	} else {
