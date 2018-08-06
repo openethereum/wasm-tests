@@ -5,7 +5,7 @@ fn main() {
 	let args = env::args().collect::<Vec<_>>();
 	let (file_name, pwasm_ethereum_version) = match args.len() {
 		2 => (&args[1], r#""0.6.1""#.to_string()),
-		3 => (&args[1], format!(r#"{{ git = "https://github.com/paritytech/pwasm-ethereum", branch = "kip4", features = [{}] }}"#, args[2].split(",").map(|s| format!(r#""{}""#, s)).collect::<Vec<_>>().join(", "))),
+		3 => (&args[1], format!(r#"{{ git = "https://github.com/paritytech/pwasm-ethereum", features = [{}] }}"#, args[2].split(",").map(|s| format!(r#""{}""#, s)).collect::<Vec<_>>().join(", "))),
 		_ => {
 			println!("Usage: {} gen <test.rs>", args[0]);
 			return;
