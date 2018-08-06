@@ -34,6 +34,3 @@ pub fn call() {
 
 	ext::ret(&output);
 }
-
-#[no_mangle]
-pub fn deploy() { }

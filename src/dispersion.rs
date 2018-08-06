@@ -24,6 +24,3 @@ pub fn call() {
 
 	ret(&dispersed[..])
 }
-
-#[no_mangle]
-pub fn deploy() { }

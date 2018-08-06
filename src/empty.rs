@@ -8,6 +8,3 @@ use pwasm_std::logger;
 pub fn call() {
 	logger::debug("Empty contract");
 }
-
-#[no_mangle]
-pub fn deploy() { }

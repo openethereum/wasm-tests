@@ -16,6 +16,3 @@ pub fn call() {
 		data
 	});
 }
-
-#[no_mangle]
-pub fn deploy() { }
