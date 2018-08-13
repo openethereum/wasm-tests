@@ -4,8 +4,8 @@ use std::path::PathBuf;
 fn main() {
 	let args = env::args().collect::<Vec<_>>();
 	let (file_name, pwasm_ethereum_version) = match args.len() {
-		2 => (&args[1], r#""0.6.1""#.to_string()),
-		3 => (&args[1], format!(r#"{{ git = "https://github.com/paritytech/pwasm-ethereum", features = [{}] }}"#, args[2].split(",").map(|s| format!(r#""{}""#, s)).collect::<Vec<_>>().join(", "))),
+		2 => (&args[1], r#""0.6.2""#.to_string()),
+		3 => (&args[1], format!(r#"{{ version = "0.6.2", features = [{}] }}"#, args[2].split(",").map(|s| format!(r#""{}""#, s)).collect::<Vec<_>>().join(", "))),
 		_ => {
 			println!("Usage: {} gen <test.rs>", args[0]);
 			return;
@@ -20,12 +20,9 @@ authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
 pwasm-std = "0.10.0"
-#pwasm-ethereum = {}
-pwasm-ethereum = {{ path = "/Users/dvd/dev/parity/pwasm-ethereum" }}
-# bigint = {{ version = "4", default-features = false }}
-# uint = {{ version = "0.3", git = "https://github.com/paritytech/parity-common", branch = "chore/pick-changes-from-bigint", default-features = false }}
-uint = {{ version = "0.3", git = "https://github.com/paritytech/parity-common", rev = "97ecf175c", default-features = false }}
-parity-hash = {{ version = "1", default-features = false }}
+pwasm-ethereum = {}
+uint = {{ version = "0.3", default-features = false }}
+parity-hash = {{ version = "1.2.2", default-features = false }}
 
 [lib]
 name = "$file_name"

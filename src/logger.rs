@@ -2,12 +2,10 @@
 
 extern crate pwasm_std;
 extern crate pwasm_ethereum as ext;
-// extern crate bigint;
 extern crate uint;
 
 use pwasm_std::write_u32;
 use pwasm_std::hash::H256;
-// use bigint::U256;
 use uint::U256;
 
 fn set_key_from_addr(key: u32, val: &[u8]) {

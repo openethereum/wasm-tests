@@ -1,6 +1,5 @@
 #![no_std]
 
-// extern crate bigint;
 extern crate uint;
 
 extern crate pwasm_ethereum;
@@ -15,8 +14,6 @@ pub fn call() {
 	ret(&{
 		let code = input[0];
 
-		// let a_param: bigint::U256 = (&input[1..33]).into();
-		// let b_param: bigint::U256 = (&input[33..65]).into();
 		let a_param: U256 = (&input[1..33]).into();
 		let b_param: U256 = (&input[33..65]).into();
 

@@ -2,12 +2,10 @@
 
 extern crate pwasm_std;
 extern crate pwasm_ethereum;
-// extern crate bigint;
 extern crate uint;
 
 use pwasm_std::{Vec, write_u64};
 use pwasm_ethereum::{self as ext};
-// use bigint::U256;
 use uint::U256;
 
 fn push_u64(buf: &mut Vec<u8>, val: u64) {
