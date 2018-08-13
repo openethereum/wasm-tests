@@ -20,8 +20,11 @@ authors = ["NikVolf <nikvolf@gmail.com>"]
 
 [dependencies]
 pwasm-std = "0.10.0"
-pwasm-ethereum = {}
-bigint = {{ version = "4", default-features = false }}
+#pwasm-ethereum = {}
+pwasm-ethereum = {{ path = "/Users/dvd/dev/parity/pwasm-ethereum" }}
+# bigint = {{ version = "4", default-features = false }}
+# uint = {{ version = "0.3", git = "https://github.com/paritytech/parity-common", branch = "chore/pick-changes-from-bigint", default-features = false }}
+uint = {{ version = "0.3", git = "https://github.com/paritytech/parity-common", rev = "97ecf175c", default-features = false }}
 parity-hash = {{ version = "1", default-features = false }}
 
 [lib]

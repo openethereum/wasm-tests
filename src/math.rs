@@ -1,9 +1,12 @@
 #![no_std]
 
-extern crate bigint;
+// extern crate bigint;
+extern crate uint;
+
 extern crate pwasm_ethereum;
 
 use pwasm_ethereum::{ret, input};
+use uint::U256;
 
 #[no_mangle]
 pub fn call() {
@@ -12,8 +15,10 @@ pub fn call() {
 	ret(&{
 		let code = input[0];
 
-		let a_param: bigint::U256 = (&input[1..33]).into();
-		let b_param: bigint::U256 = (&input[33..65]).into();
+		// let a_param: bigint::U256 = (&input[1..33]).into();
+		// let b_param: bigint::U256 = (&input[33..65]).into();
+		let a_param: U256 = (&input[1..33]).into();
+		let b_param: U256 = (&input[33..65]).into();
 
 		let result = match code {
 			0 => { a_param + b_param },
