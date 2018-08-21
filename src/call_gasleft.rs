@@ -13,7 +13,7 @@ pub fn call() {
 
 	let input = [129u8, 123, 113, 107, 101, 97];
 	let mut temp = vec![0u8; 256];
-	// 700 is the cost of CALL
+	// `700` is a fixed CALL price, that's why we have to subtract it
 	match ext_call(ext_gasleft() - 700, &addr, 1000000000.into(), &input, &mut temp[..]) {
 		Ok(_) => {
 			logger::debug("Call succeed");
