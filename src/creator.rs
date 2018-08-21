@@ -2,12 +2,14 @@
 
 extern crate pwasm_std;
 extern crate pwasm_ethereum;
-extern crate bigint;
+extern crate uint;
+
 extern crate parity_hash as hash;
 
 use pwasm_std::logger;
 use pwasm_ethereum::{input, ret, create, create2, value};
-use bigint::U256;
+
+use uint::U256;
 use hash::H256;
 
 #[no_mangle]
