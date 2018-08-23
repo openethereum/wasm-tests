@@ -2,7 +2,6 @@
 
 extern crate pwasm_std;
 extern crate pwasm_ethereum;
-extern crate bigint;
 
 use pwasm_std::{Vec, write_u64};
 use pwasm_ethereum::{self as ext};

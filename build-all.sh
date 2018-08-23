@@ -7,6 +7,8 @@ set -e
 ./build-rust-test.sh call_code
 ./build-rust-test.sh call_static
 ./build-rust-test.sh creator kip4
+./build-rust-test.sh call_gasleft kip6
+./build-rust-test.sh gasleft kip6
 ./build-rust-test.sh dispersion
 ./build-rust-test.sh empty
 ./build-rust-test.sh externs
