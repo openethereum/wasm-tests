@@ -1,0 +1,29 @@
+[
+    {
+        "caption": "keccak of \"something\"",
+        "source": "./compiled/keccak.wasm",
+        "payload": "0x736f6d657468696e67",
+        "gasLimit": 100000,
+        "asserts": [
+            { "Return": "0x68371d7e884c168ae2022c82bd837d51837718a7f7dfb7aa3f753074a35e1d87" }
+        ]
+    },
+    {
+        "caption": "keccak  of \"this tests were started at Dec, 1, 2017\"",
+        "source": "./compiled/keccak.wasm",
+        "payload": "7468697320746573747320776572652073746172746564206174204465632c20312c2032303137",
+        "gasLimit": 100000,
+        "asserts": [
+            { "Return": "0x3e2e3160f6496cfca14877d68a8473f421e292bb81c7b6b7f4e29f647327cfeb" }
+        ]
+    },
+    {
+        "caption": "keccak of space symbol",
+        "source": "./compiled/keccak.wasm",
+        "payload": "0x20",
+        "gasLimit": 100000,
+        "asserts": [
+            { "Return": "681afa780d17da29203322b473d3f210a7d621259a4e6ce9e403f5a266ff719a" }
+        ]
+    }
+]

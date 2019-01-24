@@ -1,0 +1,11 @@
+[
+    {
+        "caption": "sender extern",
+        "source": "./compiled/identity.wasm",
+        "gasLimit": 100000,
+        "sender": "0x01030507090b0d0f11131517191b1d1f21232527",
+        "asserts": [
+            { "Return": "0x01030507090b0d0f11131517191b1d1f21232527" }
+        ]
+    }
+]

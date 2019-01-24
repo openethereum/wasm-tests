@@ -1,0 +1,30 @@
+[
+    {
+        "caption": "Call code",
+        "source": "./compiled/call_code.wasm",
+        "payload": "0x736f6d657468696e67",
+        "sender": "0x01030507090b0d0f11131517191b1d1f21232527",
+        "gasLimit": 100000,
+        "asserts": [
+            { "Return": "0x1e7c41fa" },
+            { "HasCall": {
+                "codeAddress": "0x0d13710000000000000000000000000000000000",
+                "sender": "0x01030507090b0d0f11131517191b1d1f21232527" }
+            }
+        ]
+    },
+    {
+        "caption": "Call static",
+        "source": "./compiled/call_static.wasm",
+        "payload": "0x736f6d657468696e67",
+        "sender": "0x01030507090b0d0f11131517191b1d1f21232527",
+        "gasLimit": 100000,
+        "asserts": [
+            { "Return": "0x4eb0ee12" },
+            { "HasCall": {
+                "sender": "0x01030507090b0d0f11131517191b1d1f21232527",
+                "codeAddress": "0x13077bfb00000000000000000000000000000000" }
+            }
+        ]
+    }
+]
